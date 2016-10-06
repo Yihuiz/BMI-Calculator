@@ -1,101 +1,157 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Slidyfy My Shiny</title>
-    <link rel="stylesheet" href="libraries/frameworks/minimal/stylesheets/styles.css">
-    <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-        <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+<head>
+  <title>Slidyfy My Shiny</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Slidyfy My Shiny">
+  <meta name="author" content="Yihui Zuo">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
 
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
     
-  </head>
-  <body>
-    <div class="wrapper">
-<header>
-  <h1>Slidyfy My Shiny</h1>
-  <p>App BMI caculator</p>
-    <ol>
-    </ol>
-</header>
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Slidyfy My Shiny</h1>
+    <h2>App BMI caculator</h2>
+    <p>Yihui Zuo<br/>Graduate Student in North China Electric Power University</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
 
-      <section>
-        <h2>Introduce the The BMI Calculator</h2>
-<p>This presentaion will show the code of my application--
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Introduce the The BMI Calculator</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>This presentaion will show the code of my application--
 the Body Mass Index (BMI) calculator. </p>
 
 <p>The App can be found at <a href="http://yihuizuo.shinyapps.io/ShinyApp_YihuiZuo">shinyapps</a></p>
 
-<h2>Creat the User-interface definition</h2>
-<pre><code class="r">library(shiny)
-### Define UI for application that calculates your Body Mass Index(BMI) 
-shinyUI(
-  pageWithSidebar(
-    # Application title
-    headerPanel(&quot;BMI Caculator&quot;),
+  </article>
+  <!-- Presenter Notes -->
+</slide>
 
-  # Sidebar with the height and weight text input
-    sidebarPanel(
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Creat the User-interface definition</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>This shiny App is used to caculate your Body Mass Index (BMI)</p>
 
-      numericInput(&#39;height&#39;, &#39;Height m&#39;, 1.65, min = 0, max = 3, step = 0.01),
-      numericInput(&#39;weight&#39;, &#39;Weight kg&#39;, 50, min = 0, max = 300, step = 0.5),
-      submitButton(&#39;Submit&#39;)
-    ),
+<p>The input are :Height  and Weight  </p>
 
-    # Show the result of BMI
-    mainPanel(
-      h3(&#39;Your BMI&#39;),
-      verbatimTextOutput(&quot;result&quot;),
-      h3(&#39;BMI reference value&#39;),
-      h4(&#39;&lt;18.5 | Underweight&#39;),
-      h4(&#39;18.5~24.9 |   Normal&#39;),
-      h4(&#39;&gt;=25.0  |  Overweight&#39;)
+<p>The out put is your BMI</p>
 
+<p>###The calculate equation is </p>
 
-    )
-  )
-)
+<pre><code class="r">BMI=weight/(height)^2
 </code></pre>
 
-<h2>This is the server logic of the Shiny</h2>
+<h2>also tell you BMI status according to the BMI standard reference</h2>
 
-<pre><code class="r">library(shiny)
+  </article>
+  <!-- Presenter Notes -->
+</slide>
 
-#caculate the BMI 
-#Calculate function
-BMI &lt;- function(height,weight) weight/(height)^2
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>The BMI App interface</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="Graph.JPG" alt=""> </p>
 
-# Print the result
-shinyServer(function(input, output) {
+  </article>
+  <!-- Presenter Notes -->
+</slide>
 
-  output$result &lt;- renderPrint({BMI(input$height,input$weight)})
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Information</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Find out more about building applications with Shiny here<a href="https://github.com/Yihuiz/BMI-Calculator">My github</a></p>
 
+  </article>
+  <!-- Presenter Notes -->
+</slide>
 
-}
-</code></pre>
-
-<h2>Information</h2>
-
-<p>Find out more about building applications with Shiny here<a href="https://github.com/Yihuiz/BMI-Calculator">My github</a></p>
-
-      </section>
-      <footer>
-        <p>Maintained by <a href="http://github.com/">
-          Yihui Zuo
-        </a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by 
-          <a href="https://github.com/orderedlist">orderedlist</a></small>
-        </p>
-      </footer>    </div>
-    <script src="libraries/frameworks/minimal/javascripts/scale.fix.js"></script>
-  </body>
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Introduce the The BMI Calculator'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Creat the User-interface definition'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='The BMI App interface'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Information'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
   <!-- Load Javascripts for Widgets -->
   
-  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
   <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   <!-- DONE LOADING HIGHLIGHTER JS FILES -->
